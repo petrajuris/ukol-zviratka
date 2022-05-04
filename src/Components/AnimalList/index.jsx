@@ -7,11 +7,9 @@ const AnimalList = ({ animals, onAnimalChange }) => {
       <div className="animal-list">
         {animals &&
           animals.map((animal, index) => (
-            <Animal
-              animal={animal}
-              animalIndex={index}
-              onAnimalChange={onAnimalChange}
-            />
+            <div onClick={() => onAnimalChange(index)} key={index}>
+              <Animal animal={animal} animalIndex={index} />
+            </div>
           ))}
       </div>
     </>

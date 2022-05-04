@@ -1,15 +1,10 @@
 import React from "react";
 import "./style.css";
 
-const Animal = ({ animal, animalIndex, onAnimalChange }) => {
+const Animal = ({ animal, animalIndex }) => {
   return (
     <>
-      <div
-        className="animal"
-        onClick={() => {
-          onAnimalChange(animalIndex);
-        }}
-      >
+      <div className="animal">
         <div className="animal__image">
           <img src={animal.foto} alt={animal.nazev} />
         </div>

@@ -5,14 +5,14 @@ import AnimalList from "./Components/AnimalList";
 import "./style.css";
 
 const App = () => {
-  const [data, setData] = useState({});
+  const [animalsData, setAnimalsData] = useState([]);
   const [selectedAnimal, setSelectedAnimal] = useState(0);
 
   useEffect(() => {
     fetch("https://lrolecek.github.io/zviratka-api/zvirata.json")
       .then((response) => response.json())
       .then((responseData) => {
-        setData(responseData);
+        setAnimalsData(responseData.zvirata);
       });
   }, []);
 
@@ -21,8 +21,10 @@ const App = () => {
       <h1>Zvířátka v ZOO</h1>
 
       <div className="container">
-        <AnimalList animals={data.zvirata} onAnimalChange={setSelectedAnimal} />
-        {data.zvirata && <AnimalDetail animal={data.zvirata[selectedAnimal]} />}
+        <AnimalList animals={animalsData} onAnimalChange={setSelectedAnimal} />
+        {animalsData.length > 0 && (
+          <AnimalDetail animal={animalsData[selectedAnimal]} />
+        )}
       </div>
     </>
   );
